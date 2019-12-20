@@ -9,14 +9,14 @@ public class ChargeTest {
 		int percentage = 0;
 		
 		((HasBatteryInterface) robot).setCharge(-100);
-		if(((HasBatteryInterface) robot).getCharge() == -100) {
+		if(((HasBatteryInterface) robot).getCharge() < 0) {
 			System.err.println("Charge value test failed\nREASON: the value of -100 is not allowed!");
 			return percentage;
 		}
 		percentage += 25;
 		
 		((HasBatteryInterface) robot).setCharge(1000);
-		if(((HasBatteryInterface) robot).getCharge() == 1000) {
+		if(((HasBatteryInterface) robot).getCharge() > 100) {
 			System.err.println("Charge value test failed\nREASON: the value of 1000 is not allowed!");
 			return percentage;
 		}
@@ -31,7 +31,7 @@ public class ChargeTest {
 		}
 		System.out.printf("The robot took %d steps and the charge value is %d%%\n", i, ((HasBatteryInterface) robot).getCharge());
 		percentage += 50;
-		
+						
 		return percentage;
 	}
 }
